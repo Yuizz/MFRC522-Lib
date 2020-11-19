@@ -52,7 +52,7 @@
 #define MAX_LEN 16
 
 //signal RST in RB4	 
-#define RST PORTBbits.RB4
+#define RST RB4
 
 //MF522 command bits
 #define PCD_IDLE              0x00               //NO action; cancel current commands
@@ -690,12 +690,15 @@ void showSerialNumber(void){
 		status = MFRC522_Anticoll(str);
 		for(i=0; i<5; i++){	 serNum[i]=str[i];  }	//memcpy(serNum, str, 5);
 		if (status == MI_OK)	{
-	    	putsUSART(msg3);		//Serial.println("The card's number is  : ");
+	    	PrintString(msg3);//putsUSART(msg3);		//Serial.println("The card's number is  : ");
 			sprintf(string, (const far rom char*)"%2x %2x %2x %2x", str[0], str[1], str[2], str[3]);
-			putsUSART(msg0);
-			putcUSART('\r');
-			putsUSART(string);  
-			putcUSART('\r');
+			delay_ms(2000);
+			PrintString(msg0);//putsUSART(msg0);
+			delay_ms(2000);
+			//putcUSART('\r');
+			PrintString(string);//putsUSART(string);  
+			delay_ms(5000);
+			//putcUSART('\r');
 			//putcUSART('\n');  	
 	        delay1s();			}	//delay(1000);
 		MFRC522_Halt();	}}

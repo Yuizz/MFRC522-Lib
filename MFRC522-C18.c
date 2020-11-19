@@ -13,10 +13,12 @@ CODEPAGE   NAME=page       START=0x84A          END=0x7FFF
 #include <delays.h>
 #include <stdio.h>		// sprintf() library
 #include <stdlib.h>		// atoi(),atof() library 
+#include "18F2550BOLT.h"
 #include "MFRC522-RFID-SPI.h"
 
 extern void _startup( void ); // See c018i.c in your C18 compiler dir 
 #pragma code _RESET_INTERRUPT_VECTOR = 0x000800 
+
 void _reset( void ) 
 { 
     _asm goto _startup _endasm 
@@ -25,12 +27,18 @@ void _reset( void )
 #define SW2  PORTAbits.RA5
 #define SW3  PORTCbits.RC0
 #define SW4  PORTCbits.RC1
+
+char ok[2] = "OK";
 void main(void)					//select function to run, and comment the rest.
 {
 ADCON1=0x0F; 	//DISABLE CONVERTERS A/D
 CMCON=7;
 TRISA=0X30;		//RA4,RA5 ARE INPUTS (DIP SWITCHES)
 TRISC=0X0F;		//RC0,RC1 ARE INPUTS (DIP SWITCHES)
+InitLCD();
+ClearScreen();
+PrintString(ok);
+delay_ms(500);
 	while(1)
 	{
 		if(SW1==0)

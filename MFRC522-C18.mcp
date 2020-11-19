@@ -27,18 +27,22 @@ subfolder_lkr=
 file_000=.
 file_001=.
 file_002=.
+file_003=.
 [GENERATED_FILES]
 file_000=no
 file_001=no
 file_002=no
+file_003=no
 [OTHER_FILES]
 file_000=no
 file_001=no
 file_002=no
+file_003=no
 [FILE_INFO]
 file_000=MFRC522-C18.c
 file_001=MFRC522-RFID-SPI.h
-file_002=rm18f2550.lkr
+file_002=C:\Users\Julian Gonzalez\Desktop\SISTEMA-BOLT-CD-VIRTUAL\Proyectos\rc522\18F2550BOLT.h
+file_003=rm18f2550.lkr
 [SUITE_INFO]
 suite_guid={5B7D72DD-9861-47BD-9F60-2BE967BF8416}
 suite_state=
